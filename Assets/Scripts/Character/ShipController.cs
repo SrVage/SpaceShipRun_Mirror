@@ -13,7 +13,7 @@ namespace Characters
         public event Action Restart;
         [SerializeField] private Transform _cameraAttach;
         private CameraOrbit _cameraOrbit;
-        private PlayerLabel playerLabel;
+        private Label label;
         private float _shipSpeed;
         private Rigidbody _rigidbody;
         private Vector3 _spawnPoint;
@@ -23,14 +23,7 @@ namespace Characters
         private Vector3 currentPositionSmoothVelocity;
 
         protected override float speed => _shipSpeed;
-
-        private void OnGUI()
-        {
-            if (_cameraOrbit == null)            
-                return;
-            
-            _cameraOrbit.ShowPlayerLabels(playerLabel);
-        }
+        
 
         public override void OnStartAuthority()
         {
@@ -43,7 +36,7 @@ namespace Characters
             FindObjectOfType<MainMenu>().SetAction(this);
             _cameraOrbit = FindObjectOfType<CameraOrbit>();
             _cameraOrbit.Initiate(_cameraAttach == null ? transform : _cameraAttach);
-            playerLabel = GetComponentInChildren<PlayerLabel>();
+            label = GetComponentInChildren<Label>();
             CmdRefreshName(gameObject.name);
             base.OnStartAuthority();
         }

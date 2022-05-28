@@ -72,11 +72,6 @@ namespace Mechanics
             regularCamera.fieldOfView = Mathf.Lerp(regularCamera.fieldOfView, fov, changeSpeed * Time.deltaTime);
         }
 
-        public void ShowPlayerLabels(PlayerLabel label)
-        {
-            label.DrawLabel(regularCamera);
-        }
-
         private void OnValidate()
         {
             UpdateMinMaxVerticalAngles();

@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3326509750437159719}
   - component: {fileID: 3326509750437159736}
   - component: {fileID: 3326509750437159742}
+  - component: {fileID: 8373494556014140946}
   m_Layer: 6
   m_Name: Uranus
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7, y: 0, z: 1014}
   m_LocalScale: {x: 21, y: 21, z: 21}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,6 +57,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -112,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  aroundPoint: {fileID: 0}
+  aroundPoint: {x: 0, y: 0, z: 0}
   smoothTime: 0.3
   circleInSecond: 0.005
   offsetSin: 1
@@ -150,5 +153,17 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 
+  m_AssetId: eed700aa132152a40ac5bae4b5182f63
   hasSpawned: 0
+--- !u!114 &8373494556014140946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3326509750437159713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c60c664592437e459b57afa9e265659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

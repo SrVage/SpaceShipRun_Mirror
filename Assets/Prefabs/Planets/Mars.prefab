@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5477853962783499798}
   - component: {fileID: 5477853962783500269}
   - component: {fileID: 5477853962783500271}
+  - component: {fileID: -5399063854126280642}
   m_Layer: 6
   m_Name: Mars
   m_TagString: Untagged
@@ -32,6 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -189, y: 0, z: 369}
   m_LocalScale: {x: 9.5, y: 9.5, z: 9.5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -55,6 +57,7 @@ MeshRenderer:
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -112,7 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   syncMode: 0
   syncInterval: 0.1
-  aroundPoint: {fileID: 0}
+  aroundPoint: {x: 0, y: 0, z: 0}
   smoothTime: 0.3
   circleInSecond: 0.0023
   offsetSin: 1
@@ -150,5 +153,17 @@ MonoBehaviour:
   sceneId: 0
   serverOnly: 0
   visible: 0
-  m_AssetId: 
+  m_AssetId: 0ff830cc4030e674385cb81e4a417ddc
   hasSpawned: 0
+--- !u!114 &-5399063854126280642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5477853962783499796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c60c664592437e459b57afa9e265659, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
