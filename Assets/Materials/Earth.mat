@@ -80,7 +80,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Atmosphere: 0.312
+    - _Atmosphere: 0.326
     - _BumpScale: 1
     - _CityEmissionStrength: 0.34
     - _CloudAlpha: 0.589
@@ -91,7 +91,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 1
     - _Height: 0.53
-    - _InsideWideOfCircle: 1.6
+    - _InsideWideOfCircle: 1.53
     - _Metallic: 0
     - _Mode: 1
     - _OcclusionStrength: 1

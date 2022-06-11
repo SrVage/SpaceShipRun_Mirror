@@ -20,7 +20,7 @@ Shader "Unlit/PlanetNoiseShader"
     }
     SubShader
     {
-        Tags {"RenderType"="Transparent"}
+        Tags {"LightMode" = "SRPDefaultUnlit" "RenderType"="Transparent"}
         LOD 100
 
         Pass //отрисовка планеты
@@ -119,7 +119,7 @@ Shader "Unlit/PlanetNoiseShader"
                 Pass
         {
             Cull Front
-            Tags {"RenderType"="Transparent" "Queue" = "Geometry" }
+            Tags {"LightMode" = "SRPDefaultUnlit2" "RenderType"="Transparent" "Queue" = "Geometry" }
             Blend SrcAlpha OneMinusSrcAlpha
             CGPROGRAM
             #pragma exclude_renderers d3d11
@@ -201,7 +201,7 @@ Shader "Unlit/PlanetNoiseShader"
             Pass Replace
         }
             Blend SrcAlpha OneMinusSrcAlpha
-            Tags {"RenderType"="Transparent" "Queue" = "Geometry-1" }
+            Tags {"LightMode" = "SRPDefaultUnlit3" "RenderType"="Transparent" "Queue" = "Geometry-1" }
             CGPROGRAM
             #pragma exclude_renderers d3d11
             #pragma vertex vert
@@ -245,7 +245,7 @@ Shader "Unlit/PlanetNoiseShader"
             Comp NotEqual
         }
              Blend SrcAlpha OneMinusSrcAlpha
-             Tags {"RenderType"="Transparent" "Queue" = "Geometry" }
+             Tags {"LightMode" = "SRPDefaultUnlit4" "RenderType"="Transparent" "Queue" = "Geometry" }
             CGPROGRAM
 #pragma exclude_renderers d3d11
             #pragma vertex vert
