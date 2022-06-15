@@ -1,0 +1,37 @@
+#pragma kernel CSMain
+
+
+float SpinAngleDelta;
+float PositionOffset;
+
+float4 RotateY(float angle)
+{
+    float sina, cosa;
+    sina = sin(0.5f*angle);
+    cosa = cos(0.5f*angle);
+    return float4(0.0f, sina, 0.0f, cosa);
+}
+
+struct Part
+{
+    float3 Direction; 
+    float4 Rotation; 
+    float3 WorldPosition; 
+    float4 WorldRotation; 
+    float SpinAngle;
+    float3 ParentPosition;
+    float4 ParentRotation;
+    float Scale;
+};
+Part Input;
+RWStructuredBuffer<Part> Parts;
+
+[numthreads(8,8,1)]
+void CSMain (uint3 id : SV_DispatchThreadID)
+{
+    Part calculatePart = Input;
+    calculatePart.SpinAngle += SpinAngleDelta;
+    calculatePart.WorldRotation = mul(calculatePart.ParentRotation, mul(calculatePart.Rotation, RotateY(calculatePart.SpinAngle)));
+    calculatePart.WorldPosition = calculatePart.ParentPosition + mul(calculatePart.ParentRotation, PositionOffset*calculatePart.Scale*calculatePart.Direction);
+    Parts[id.x] = calculatePart;
+}

@@ -6,20 +6,20 @@ public class PlanetOrbit : NetworkMovableObject
 {
     protected override float speed => smoothTime;
 
-    [SerializeField] private Vector3 aroundPoint;
-    [SerializeField] private float smoothTime = .3f;
-    [SerializeField] private float circleInSecond = 1f;
+    [SerializeField] protected Vector3 aroundPoint;
+    [SerializeField] protected float smoothTime = .3f;
+    [SerializeField] protected float circleInSecond = 1f;
 
-    [SerializeField] private float offsetSin = 1;
-    [SerializeField] private float offsetCos = 1;
-    [SerializeField] private float rotationSpeed;
+    [SerializeField] protected float offsetSin = 1;
+    [SerializeField] protected float offsetCos = 1;
+    [SerializeField] protected float rotationSpeed;
 
-    [SerializeField] float radius;
-    private float currentAng;
-    private Vector3 currentPositionSmoothVelocity;
-    private float currentRotationAngle;
+    [SerializeField] protected float radius;
+    protected float currentAng;
+    protected Vector3 currentPositionSmoothVelocity;
+    protected float currentRotationAngle;
 
-    private const float circleRadians = Mathf.PI * 2;
+    protected const float circleRadians = Mathf.PI * 2;
 
     private void Start()
     {
