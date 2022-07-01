@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Star
-  m_Shader: {fileID: 4800000, guid: d1d2f25e65ec04b958deb43ba99a290a, type: 3}
+  m_Shader: {fileID: 4800000, guid: e3b4b18b80fa3476c8c1d1f21d6d556b, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
@@ -58,6 +58,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Atmosphere: 0.312
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
@@ -65,16 +66,26 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
+    - _Height: -0.1
+    - _InsideWideOfCircle: 1.46
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
+    - _Seed: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
+    - _WideOfCircle: 2.16
     - _ZWrite: 1
     m_Colors:
+    - _AtmosphereColor: {r: 0.21226415, g: 0.8490566, b: 0.8425516, a: 1}
+    - _CircleColor: {r: 0.40664768, g: 0.32694018, b: 0.8773585, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _DeepWaterColor: {r: 0.101970546, g: 0.0026699959, b: 0.5660378, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _GroundColor: {r: 0.6415094, g: 0.41629744, b: 0.34798858, a: 1}
+    - _MountainColor: {r: 1, g: 0.8349056, b: 0.8349056, a: 1}
+    - _WaterColor: {r: 0.12246352, g: 0.4905594, b: 0.6037736, a: 1}
   m_BuildTextureStacks: []

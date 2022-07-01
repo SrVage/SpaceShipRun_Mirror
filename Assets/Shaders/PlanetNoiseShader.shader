@@ -22,11 +22,70 @@ Shader "Unlit/PlanetNoiseShader"
     {
         Tags {"LightMode" = "SRPDefaultUnlit" "RenderType"="Transparent"}
         LOD 100
+        
+                        Pass
+        {
+             Stencil 
+        {
+            Ref 5
+            Comp NotEqual
+        }
+            //Cull Front
+            Tags {"LightMode" = "SRPDefaultUnlit2" "RenderType"="Transparent" "Queue" = "Transparent-1" }
+            Blend SrcAlpha OneMinusSrcAlpha
+            CGPROGRAM
+            #pragma vertex vert
+            #pragma fragment frag
+
+            #include "UnityCG.cginc"
+
+            struct appdata
+            {
+                float4 vertex : POSITION;
+                float4 normal : NORMAL;
+                float2 uv : TEXCOORD0;
+            };
+
+            struct v2f
+            {
+                float4 vertex : SV_POSITION;
+                float scalar:FLOAT0;
+                float distance:FLOAT1;
+            };
+
+            sampler2D _MainTex;
+            float4 _MainTex_ST;
+            fixed _Atmosphere;
+            fixed4 _AtmosphereColor;
+            
+            v2f vert (appdata v)
+            {
+                v2f o;
+                o.vertex = UnityObjectToClipPos(v.vertex*(1+_Atmosphere));
+                o.scalar = dot(_WorldSpaceCameraPos - mul(unity_ObjectToWorld,v.vertex), UnityObjectToWorldNormal(v.normal));
+                o.distance = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld,v.vertex));
+                return o;
+            }
+
+            fixed4 frag (v2f o) : SV_Target
+            {
+                fixed4 col;
+                col.rgb = _AtmosphereColor*o.scalar/10;
+                col.a =1000*_AtmosphereColor.a*o.scalar/pow(o.distance,2);
+                return col;
+            }
+            ENDCG
+            }
 
         Pass //отрисовка планеты
         {
+             Stencil 
+        {
+            Ref 5
+            Comp Always
+            Pass Replace
+        }
             CGPROGRAM
-            #pragma exclude_renderers d3d11
             #pragma vertex vert
             #pragma fragment frag
 
@@ -116,79 +175,7 @@ Shader "Unlit/PlanetNoiseShader"
         }
         
         
-                Pass
-        {
-            Cull Front
-            Tags {"LightMode" = "SRPDefaultUnlit2" "RenderType"="Transparent" "Queue" = "Geometry" }
-            Blend SrcAlpha OneMinusSrcAlpha
-            CGPROGRAM
-            #pragma exclude_renderers d3d11
-            #pragma vertex vert
-            #pragma fragment frag
 
-            #include "UnityCG.cginc"
-
-            struct appdata
-            {
-                float4 vertex : POSITION;
-                float4 normal : NORMAL;
-                float2 uv : TEXCOORD0;
-            };
-
-            struct v2f
-            {
-                float4 vertex : SV_POSITION;
-                float scalar:FLOAT0;
-                float light:FLOAT1;
-                float distance:FLOAT2;
-            };
-
-            sampler2D _MainTex;
-            float4 _MainTex_ST;
-            fixed _Atmosphere;
-            fixed4 _AtmosphereColor;
-            fixed _Seed;
-
-            float hash(float2 st)
-            {
-                return frac(sin(dot(st.xy, float2(12.9898, 78.233))) * 43758.5453123);
-            }
-
-            float noise(float2 p, float size)
-            {
-                float result = 0;
-                p *= size;
-                float2 i = floor(p + _Seed);
-                float2 f = frac(p + _Seed / 739);
-                float2 e = float2(0, 1);
-                float z0 = hash((i + e.xx) % size);
-                float z1 = hash((i + e.yx) % size);
-                float z2 = hash((i + e.xy) % size);
-                float z3 = hash((i + e.yy) % size);
-                float2 u = smoothstep(0, 1, f);
-                result = lerp(z0, z1, u.x) + (z2 - z0) * u.y * (1.0 - u.x) + (z3 - z1) * u.x * u.y;
-                return result;
-            }
-
-            v2f vert (appdata v)
-            {
-                v2f o;
-                o.vertex = UnityObjectToClipPos(v.vertex*(1+_Atmosphere));
-                o.scalar = dot(_WorldSpaceCameraPos - mul(unity_ObjectToWorld,v.vertex), UnityObjectToWorldNormal(v.normal));
-                o.distance = distance(_WorldSpaceCameraPos, mul(unity_ObjectToWorld,v.vertex));
-                o.light = noise(v.uv+_CosTime.x, 5) * 0.75 + noise(v.uv+_CosTime.x, 30) *0.125 + noise(v.uv, 50) * 0.125;
-                return o;
-            }
-
-            fixed4 frag (v2f o) : SV_Target
-            {
-                fixed4 col;
-                col.rgb = _AtmosphereColor*o.scalar/10+o.light;
-                col.a =1000*_AtmosphereColor.a*o.scalar/pow(o.distance,2);
-                return col;
-            }
-            ENDCG
-            }
         
         
         Pass //расчет внутренней окружности для стенсил-буффера
@@ -201,9 +188,8 @@ Shader "Unlit/PlanetNoiseShader"
             Pass Replace
         }
             Blend SrcAlpha OneMinusSrcAlpha
-            Tags {"LightMode" = "SRPDefaultUnlit3" "RenderType"="Transparent" "Queue" = "Geometry-1" }
+            Tags {"LightMode" = "SRPDefaultUnlit3" "RenderType"="Transparent" "Queue" = "Transparent-1" }
             CGPROGRAM
-            #pragma exclude_renderers d3d11
             #pragma vertex vert
             #pragma fragment frag
 
@@ -245,9 +231,8 @@ Shader "Unlit/PlanetNoiseShader"
             Comp NotEqual
         }
              Blend SrcAlpha OneMinusSrcAlpha
-             Tags {"LightMode" = "SRPDefaultUnlit4" "RenderType"="Transparent" "Queue" = "Geometry" }
+             Tags {"LightMode" = "SRPDefaultUnlit4" "RenderType"="Transparent" "Queue" = "Transparent" }
             CGPROGRAM
-#pragma exclude_renderers d3d11
             #pragma vertex vert
             #pragma fragment frag
 

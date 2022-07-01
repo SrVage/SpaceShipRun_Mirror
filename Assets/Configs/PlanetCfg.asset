@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7a3ce5dad634ef989817973af34b38a, type: 3}
+  m_Name: PlanetCfg
+  m_EditorClassIdentifier: 
+  Planets:
+  - Radius: 100
+    Prefab: {fileID: 3242663076738392923, guid: 3b7d34ae456eaf3489fae047b2bc2528, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}
+  - Radius: 200
+    Prefab: {fileID: 8515252044354492316, guid: d1870217b71d0084badf387a367aada9, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}
+  - Radius: 300
+    Prefab: {fileID: 6708720114070357044, guid: c461dab61d0e78740a135148dff57fbc, type: 3}
+    Atmosphere: 1
+    AtmosphereColor: {r: 0.7830189, g: 0.121885024, b: 0.121885024, a: 1}
+  - Radius: 400
+    Prefab: {fileID: 5477853962783499796, guid: 0ff830cc4030e674385cb81e4a417ddc, type: 3}
+    Atmosphere: 0.356
+    AtmosphereColor: {r: 0.12001601, g: 0.2735849, b: 0.2526531, a: 1}
+  - Radius: 500
+    Prefab: {fileID: 2159390517216399412, guid: 02217303ecac3c04fb84db7a6533fbfc, type: 3}
+    Atmosphere: 0.962
+    AtmosphereColor: {r: 0.3509578, g: 0.4056604, b: 0.044010334, a: 1}
+  - Radius: 600
+    Prefab: {fileID: 155515399679635778, guid: f1b69c3de4744254190f9f9158412a0f, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}
+  - Radius: 700
+    Prefab: {fileID: 3326509750437159713, guid: eed700aa132152a40ac5bae4b5182f63, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}
+  - Radius: 800
+    Prefab: {fileID: 7011484644782264123, guid: 5502213ea9b0e514290ad53edf022454, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}
+  - Radius: 250
+    Prefab: {fileID: 5477853962783499796, guid: 430ab3757a7f64b75a7db13cb9f05225, type: 3}
+    Atmosphere: 0
+    AtmosphereColor: {r: 0, g: 0, b: 0, a: 0}

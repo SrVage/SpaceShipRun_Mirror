@@ -41,7 +41,8 @@ Shader "Custom/NewSurfaceShader"
         {
             float difLight = max(0, dot (s.Normal, lightDir));
             float4 col;
-            col.rgb = s.Albedo * _LightColor0.rgb * (difLight * atten * 2); col.a = s.Alpha;
+            col.rgb = s.Albedo * _LightColor0.rgb * (difLight * atten * 2);
+            col.a = s.Alpha;
             return col;
         }
 

@@ -109,7 +109,7 @@ namespace Mechanics
                 DeltaTime = Time.deltaTime
             }.Schedule(_asteroids.Length, 5);
             jobHandle.Complete();
-            var bounds = new Bounds(aroundPoint, float3(3));
+            var bounds = new Bounds(aroundPoint, float3(500));
             var buffer = _matricesBuffers;
             buffer.SetData(_matrices);
             _propertyBlock.SetBuffer(_matricesId, buffer);

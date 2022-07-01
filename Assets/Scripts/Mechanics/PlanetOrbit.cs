@@ -14,15 +14,17 @@ public class PlanetOrbit : NetworkMovableObject
     [SerializeField] protected float offsetCos = 1;
     [SerializeField] protected float rotationSpeed;
 
-    [SerializeField] protected float radius;
+    protected float radius;
     protected float currentAng;
     protected Vector3 currentPositionSmoothVelocity;
     protected float currentRotationAngle;
 
     protected const float circleRadians = Mathf.PI * 2;
 
-    private void Start()
+    public void Init(float newRadius)
     {
+        radius = newRadius;
+        Debug.Log(gameObject.name+" "+radius);
         Initiate(UpdatePhase.FixedUpdate);
     }
 
@@ -30,10 +32,10 @@ public class PlanetOrbit : NetworkMovableObject
     {
         if (!isServer)
             return;
-
         Vector3 p = aroundPoint;
         p.x += Mathf.Sin(currentAng) * radius * offsetSin;
         p.z += Mathf.Cos(currentAng) * radius * offsetCos;
+        Debug.Log(radius);
         transform.position = p;
         currentRotationAngle += Time.deltaTime * rotationSpeed;
         currentRotationAngle = Mathf.Clamp(currentRotationAngle, 0, 361);
